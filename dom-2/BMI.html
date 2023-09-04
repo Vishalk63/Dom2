@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Check your BMI</h1>
+    <h3>Enter your weight and height below to check your BMI results</h3>
+    <h3>Put your weight in here (KG)</h3>
+    <input type="number" id="weight">
+    <h3>And your height in here (CM)</h3>
+    <input type="number" id="height">
+    <button onclick="myfun()">Calculate BMI</button>
+    <button onclick="clr()">Clear</button>
+    <h2>Your BMI is <span id="bmival">00</span> which means You are <span id="obs">----</span></h2>
+    
+</body>
+    <script>
+        let height = document.getElementById("height")
+        let weight = document.getElementById("weight")
+        let bmival = document.getElementById("bmival");
+        let obs = document.getElementById("obs")
+        function myfun(){
+            let val= ""
+            let w = (weight.value);
+            let h = (height.value)
+            let bmi = w / (h/100 * h/100);
+            // console.log(Math.floor(bmi))
+            bmival.innerText = Math.floor(bmi);
+            if(bmi <= 18.4){
+                val = "UnderWeigt";
+            }
+            else if(bmi >= 18.5 && bmi <= 24.9){
+                val = "Normal";
+            }
+            else if (bmi >= 25 && bmi <= 29.9){
+                val = "Overweigt"
+            }
+            else if ( bmi >= 30){
+                val = "Obsese"
+            }
+            obs.innerText = val;
+        }
+
+        function clr(){
+            height.value=""
+            weight.value=""
+            bmival.innerText= "00"
+            obs.innerText= "--"
+        }
+    </script>
+</html>
